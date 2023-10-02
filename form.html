@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Customer Feedback Form</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* CSS for underlining the title */
+    h2.title-underline {
+      text-decoration: underline;
+    }
+    .form-container {
+      background-color: skyblue;
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="mt-4">Customer Feedback Form</h2>
+    <form id="feedbackForm" class="mt-4">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country</label>
+        <select id="country" class="form-control" required>
+          <option value="">Select Country</option>
+          <option value="India">India</option>
+          <option value="UK">UK</option>
+          <option value="USA">USA</option>
+          <option value="Australia">Australia</option>
+          <option value="Russia">Russia</option>
+          <option value="Sri Lanka">Sri Lanka</option>
+          <option value="Japan">Japan</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label><br>
+        <div class="form-check form-check-inline">
+          <input type="radio" id="male" name="gender" value="Male" class="form-check-input" required>
+          <label for="male" class="form-check-label">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" id="female" name="gender" value="Female" class="form-check-input" required>
+          <label for="female" class="form-check-label">Female</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" id="unknown" name="gender" value="Unknown" class="form-check-input" required>
+          <label for="unknown" class="form-check-label">Unknown</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Meal</label><br>
+        <div class="form-check form-check-inline">
+          <input type="checkbox" id="mealRice" class="form-check-input">
+          <label for="mealRice" class="form-check-label">Rice</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Preference</label><br>
+        <div class="form-check form-check-inline">
+          <input type="checkbox" id="preferenceBread" class="form-check-input">
+          <label for="preferenceBread" class="form-check-label">Bread</label>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="register()">Register</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    function register() {
+      const fullName = document.getElementById("fullName").value;
+      const dob = document.getElementById("dob").value;
+      const country = document.getElementById("country").value;
+      const gender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '';
+      const mealRice = document.getElementById("mealRice").checked ? "Rice" : '';
+      const preferenceBread = document.getElementById("preferenceBread").checked ? "Bread" : '';
+
+      if (!fullName || !dob || !country || !gender) {
+        alert("Please fill in all the mandatory fields.");
+      } else {
+        const feedbackForm = document.getElementById("feedbackForm");
+        feedbackForm.reset();
+        alert(fullName + " is successfully registered!");
+        const formData = {
+          fullName: fullName,
+          dob: dob,
+          country: country,
+          gender: gender,
+          mealRice: mealRice,
+          preferenceBread: preferenceBread
+        };
+        console.log(formData);
+      }
+    }
+  </script>
+</body>
+
+</html>
